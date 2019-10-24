@@ -1,9 +1,10 @@
+package web;
+
 import models.service.CourseServiceModel;
-import services.CoursesService;
+import services.courses.CoursesService;
 import services.HtmlService;
 
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,8 +20,7 @@ public class CoursesServlet extends ViewHttpServlet {
     @Inject
     public CoursesServlet(
             CoursesService coursesService,
-            HtmlService htmlService,
-            EntityManager entityManager) {
+            HtmlService htmlService) {
         this.coursesService = coursesService;
         this.htmlService = htmlService;
     }

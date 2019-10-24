@@ -1,12 +1,11 @@
-package services.implementations;
+package services.courses.implementations;
 
 import models.entities.Course;
 import models.service.CourseServiceModel;
-import services.CoursesService;
+import services.courses.CoursesService;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 

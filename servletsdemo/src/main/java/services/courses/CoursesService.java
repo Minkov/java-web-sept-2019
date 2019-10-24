@@ -1,4 +1,4 @@
-package services;
+package services.courses;
 
 import models.service.CourseServiceModel;
 

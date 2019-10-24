@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en"
+      lang="en"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+<head>
+    <title>Superheroes</title>
+</head>
+<h:body>
+    <ui:composition template="common.xhtml">
+        <ui:define name="content">
+            <h:form>
+                <h:inputText value="#{superheroesForm.name}"/>
+                <h:inputSecret value="#{superheroesForm.secretIdentity}">
+                    <f:validateLength minimum="10" maximum="15"/>
+                </h:inputSecret>
+                <h1>
+                    <h:outputText value="#{superheroesForm.name}"/>
+                </h1>
+                <h:commandButton action="#{superheroesForm.create}" value="Create Superhero"/>
+            </h:form>
+
+            <h:outputText value="#{dates.currentDate}">
+                <f:convertDateTime
+                        pattern="HH:mm:ss E dd, MMM yyyy"
+                        locale="bg"/>
+            </h:outputText>
+
+            <h2>
+                I am <h:outputText value="#{superheroesForm.name}"/>
+
+                <h:outputFormat value="I am {0}">
+                    <f:param value="#{superheroesForm.name}"/>
+                </h:outputFormat>
+            </h2>
+
+            <h:selectBooleanCheckbox value="true"/>
+            <h:selectBooleanCheckbox value="false"/>
+            <h:selectOneRadio>
+                <c:forEach var="item" items="#{superheroesForm.alignments}">
+                    <f:selectItem itemValue="#{item}" itemLabel="Select #{item}"/>
+                </c:forEach>
+            </h:selectOneRadio>
+            <h:selectOneMenu>
+                <c:forEach var="item" items="#{superheroesForm.alignments}">
+                    <f:selectItem itemValue="#{item}" itemLabel="Select #{item}"/>
+                </c:forEach>
+            </h:selectOneMenu>
+            <h:selectManyMenu>
+                <c:forEach var="item" items="#{superheroesForm.alignments}">
+                    <f:selectItem itemValue="#{item}" itemLabel="Select #{item}"/>
+                </c:forEach>
+            </h:selectManyMenu>
+
+
+            <h:dataTable value="#{superheroesTable.superheroes}" var="superhero">
+                <h:column>
+                    #{superhero.name}
+                </h:column>
+                <h:column>
+                    #{superhero.secretIdentity}
+                </h:column>
+            </h:dataTable>
+
+            <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript">
+            </script>
+            <h:outputScript>
+                // $(document.body).css('background', 'red');
+                // alert('It works!');
+            </h:outputScript>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>
